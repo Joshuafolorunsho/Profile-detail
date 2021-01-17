@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Potta+One&display=swap');
+
+$color-primary: #8743ff;
+
+$color-light-mode-lg: #eaf2ff;
+$color-dark-mode-lg: #171717;
+$color-white: #fff;
+$color-black: #000;
+
+$color-grey: #999;
+$color-deep-grey: #646464;
+$color-lighter-grey: #fbfdff;
+
+$font-poppins: 'Poppins', sans-serif;
+$font-potta: 'Potta One', cursive;
+
+body {
+    font-family: $font-poppins;
+}
+
+.dark-mode {
+    background-color: $color-dark-mode-lg;
+    color: $color-white;
+    min-height: 100vh;
+
+    input {
+        background-color: #0d0d0d;
+        color: #646464;
+
+        &::placeholder {
+            color: #a8a0a0;
+        }
+    }
+
+    h1 {
+        color: $color-grey;
+    }
+
+    .select-dropdown {
+        background-color: #0d0d0d;
+
+        select {
+            color: #a8a0a0;
+        }
+
+        option {
+            background-color: #0d0d0d;
+        }
+    }
+
+    .filter {
+        p {
+            color: #6e6e6e;
+        }
+    }
+
+    tr:nth-child(even),
+    th {
+        background: $color-black;
+        color: $color-grey;
+    }
+
+    th {
+        border-bottom: 1px solid $color-grey;
+    }
+
+    tr:nth-child(odd) {
+        background: #0d0d0d;
+        color: $color-grey;
+    }
+
+    td.name {
+        color: $color-white;
+    }
+}
+
+.light-mode {
+    background-color: $color-light-mode-lg;
+    min-height: 100vh;
+
+    h1 {
+        color: $color-grey;
+    }
+
+    input {
+        background-color: $color-white;
+        &::placeholder {
+            color: $color-grey;
+        }
+    }
+
+    tr:nth-child(odd),
+    th {
+        background: #f9f9f9;
+    }
+    tr:nth-child(even) {
+        background: #f4f4f4;
+    }
+}
+
+.wrapper {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .top-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 1.2rem;
+            font-family: $font-potta;
+        }
+
+        button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    header {
+        margin-top: 2rem;
+
+        @media (min-width: 768px) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        input {
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            border: none;
+            width: 95%;
+
+            @media (min-width: 768px) {
+                margin-bottom: 0;
+                width: 250px;
+            }
+
+            @media (min-width: 1200px) {
+                width: 350px;
+            }
+
+            &::placeholder {
+                font-family: $font-poppins;
+                font-size: 0.8rem;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        .search-container {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .filter {
+        @media (min-width: 420px) {
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 576px) {
+            justify-content: space-between;
+        }
+    }
+
+    main {
+        overflow-x: auto;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 30px;
+    
+        @media (min-width: 1200px) {
+            margin-top: 50px;
+        }
+    }
+    
+    th {
+        color: $color-deep-grey;
+        border-bottom: 1px solid lighten($color-deep-grey, 50%);
+        font-family: $font-potta;
+    }
+    
+    th,
+    td {
+        text-align: left;
+        padding: 1rem;
+    }
+    tr {
+        box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.03);
+        border-radius: 11px;
+    }
+    
+    .select-dropdown,
+    .select-dropdown * {
+        margin: 0;
+        padding: 0;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    .select-dropdown {
+        position: relative;
+        border-radius: 4px;
+    
+        background-color: $color-lighter-grey;
+        border: none;
+        cursor: pointer;
+        margin-top: 1rem;
+    
+        @media (min-width: 420px) {
+            margin-top: 0;
+            margin-left: 1rem;
+        }
+    }
+    .select-dropdown select {
+        font-family: $font-poppins;
+        padding: 0.5rem 1.3rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: normal;
+        max-width: 100%;
+    
+        border: none;
+        background-color: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    
+        @media (max-width: 420px) {
+            width: 100%;
+        }
+    }
+
+    .select-dropdown select:active,
+    .select-dropdown select:focus {
+        outline: none;
+        box-shadow: none;
+    }
+    .select-dropdown:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        width: 0;
+        height: 0;
+        margin-top: -2px;
+        border-top: 5px solid #aaa;
+        border-right: 5px solid transparent;
+        border-left: 5px solid transparent;
+    }
+    
+    footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        p {
+            color: #8c9199;
+        }
+    
+        ul {
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+    
+            li {
+                margin-left: 0.7rem;
+    
+                button {
+                    background-color: $color-white;
+                    color: $color-primary;
+                    border: none;
+                    cursor: pointer;
+                    font-weight: 500;
+                    font-family: inherit;
+    
+                    &.active {
+                        background-color: $color-primary;
+                        color: $color-white;
+                    }
+    
+                    &:hover {
+                        background-color: $color-grey;
+                        color: $color-white;
+                    }
+    
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
