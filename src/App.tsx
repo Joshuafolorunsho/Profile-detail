@@ -12,7 +12,7 @@ interface Profile {
     PaymentMethod: string;
 }
 
-const App = () => {
+const App: React.FC = () => {
     const [profiles, setProfiles] = useState<Profile[]>([]);
     const [profilesData, setProfilesData] = useState<Profile[]>([]);
     const [inputValue, setInputValue] = useState('');
@@ -90,13 +90,11 @@ const App = () => {
         return pageNumbers.map((number) => {
             const active = currentPage === number ? 'active' : '';
             return (
-                <>
-                    <li>
-                        <button className={active} onClick={() => setCurrentPage(number)}>
-                            {number}
-                        </button>
-                    </li>
-                </>
+                <li key={number}>
+                    <button className={active} onClick={() => setCurrentPage(number)}>
+                        {number}
+                    </button>
+                </li>
             );
         });
     };
@@ -173,7 +171,6 @@ const App = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th>#</th>
                                 <th>Name</th>
                                 <th>Gender</th>
                                 <th>Username</th>
@@ -185,7 +182,7 @@ const App = () => {
                         </thead>
                         <tbody>
                             {loading
-                                ? 'loading...'
+                                ? ''
                                 : currentPosts
                                       .filter(({ FirstName, LastName }) => {
                                           const name = `${FirstName} ${LastName}`.toLowerCase();
@@ -193,22 +190,18 @@ const App = () => {
                                       })
 
                                       .map(
-                                          (
-                                              {
-                                                  FirstName,
-                                                  LastName,
-                                                  UserName,
-                                                  Gender,
-                                                  Email,
-                                                  PhoneNumber,
-                                                  DomainName,
-                                                  PaymentMethod,
-                                              },
-                                              index,
-                                          ) => {
+                                          ({
+                                              FirstName,
+                                              LastName,
+                                              UserName,
+                                              Gender,
+                                              Email,
+                                              PhoneNumber,
+                                              DomainName,
+                                              PaymentMethod,
+                                          }) => {
                                               return (
                                                   <tr key={UserName}>
-                                                      <td>{index + 1}</td>
                                                       <td className="name">
                                                           {FirstName} {LastName}
                                                       </td>
@@ -224,9 +217,17 @@ const App = () => {
                                       )}
                         </tbody>
                     </table>
+
+                    {loading ? (
+                        <div className="box">
+                            <div className="loader"></div>
+                        </div>
+                    ) : (
+                        ''
+                    )}
                 </main>
                 <footer>
-                    <p>{showProfileDetail}</p>
+                    <p>{!loading ? showProfileDetail : null}</p>
                     <ul>{displayPagination(profilesPerPage, profiles.length)}</ul>
                 </footer>
             </div>

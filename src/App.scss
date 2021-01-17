@@ -103,6 +103,46 @@ body {
     max-width: 1200px;
     margin: 0 auto;
 
+    .box {
+        height: 200px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        border-radius: 3px;
+        position: relative;
+        margin-bottom: 0.25em;
+        vertical-align: top;
+        transition: 0.3s color, 0.3s border, 0.3s transform, 0.3s opacity;
+    }
+
+    .loader {
+        display: inline-block;
+        margin-top: 2em;
+        width: 8em;
+        height: 8em;
+        text-align: center;
+        color: inherit;
+        vertical-align: middle;
+        pointer-events: none;
+        border: 0.2em solid currentcolor;
+        border-radius: 50%;
+        animation: loader 1s ease-out infinite;
+    }
+
+    @keyframes loader {
+        0% {
+            transform: scale(0);
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0;
+        }
+    }
+
     .top-nav {
         display: flex;
         align-items: center;
@@ -117,7 +157,7 @@ body {
             border: none;
             background-color: transparent;
             cursor: pointer;
-            
+
             &:focus {
                 outline: none;
             }
@@ -178,23 +218,23 @@ body {
     main {
         overflow-x: auto;
     }
-    
+
     table {
         border-collapse: collapse;
         width: 100%;
         margin-top: 30px;
-    
+
         @media (min-width: 1200px) {
             margin-top: 50px;
         }
     }
-    
+
     th {
         color: $color-deep-grey;
         border-bottom: 1px solid lighten($color-deep-grey, 50%);
         font-family: $font-potta;
     }
-    
+
     th,
     td {
         text-align: left;
@@ -204,7 +244,7 @@ body {
         box-shadow: 0px 25px 40px rgba(0, 0, 0, 0.03);
         border-radius: 11px;
     }
-    
+
     .select-dropdown,
     .select-dropdown * {
         margin: 0;
@@ -216,12 +256,12 @@ body {
     .select-dropdown {
         position: relative;
         border-radius: 4px;
-    
+
         background-color: $color-lighter-grey;
         border: none;
         cursor: pointer;
         margin-top: 1rem;
-    
+
         @media (min-width: 420px) {
             margin-top: 0;
             margin-left: 1rem;
@@ -234,13 +274,13 @@ body {
         font-size: 1rem;
         font-weight: normal;
         max-width: 100%;
-    
+
         border: none;
         background-color: transparent;
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-    
+
         @media (max-width: 420px) {
             width: 100%;
         }
@@ -263,24 +303,24 @@ body {
         border-right: 5px solid transparent;
         border-left: 5px solid transparent;
     }
-    
+
     footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
-    
+
         p {
             color: #8c9199;
         }
-    
+
         ul {
             display: flex;
             align-items: center;
             list-style-type: none;
-    
+
             li {
                 margin-left: 0.7rem;
-    
+
                 button {
                     background-color: $color-white;
                     color: $color-primary;
@@ -288,17 +328,17 @@ body {
                     cursor: pointer;
                     font-weight: 500;
                     font-family: inherit;
-    
+
                     &.active {
                         background-color: $color-primary;
                         color: $color-white;
                     }
-    
+
                     &:hover {
                         background-color: $color-grey;
                         color: $color-white;
                     }
-    
+
                     &:focus {
                         outline: none;
                     }
@@ -306,6 +346,4 @@ body {
             }
         }
     }
-    
 }
-
